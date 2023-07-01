@@ -60,7 +60,7 @@ class RolexspiderSpider(scrapy.Spider):
             
 
            #for each watch type, open all drop down menus to prepare page to be scraped
-            yield SeleniumRequest(url=watch_model_link,callback=self.parse_watch_page,script="document.querySelector('.css-1tg8aam e1yf0wve3').click()",wait_time=5)
+            yield SeleniumRequest(url=watch_model_link,callback=self.parse_watch_page,script="document.querySelector('.css-1tg8aam e1yf0wve3').click()")
 
     
     def parse_watch_page(self,response):
@@ -76,23 +76,22 @@ class RolexspiderSpider(scrapy.Spider):
 
         #scrape all key values in dropdown menu
         values = response.css('ul.css-1pwmb5z.e1yf0wve2 p::text').getall()
+        
         #zip keys and values together
         specs = dict(zip(keys,values))
 
         #time.sleep(3)
+        
         #scrape data not in dropdown menu
         other_specs = {
-        
         'model_name' : response.css('section.css-1vaz9md.e11axyq41 h2::text').get(),
         #'Price' : response.xpath('//script/text()').getall() ,
         'reference_number': response.css('p.css-pzm8qd.e1yf0wve6 ::text').getall()[2],
         'model_url':response.url,
         'model_image': response.css('figure.wv_reveal img.css-fmei9v.er6nhxj0 ::attr(srcset)').get().split(',')[0].strip(','),
         'collection':str(response).split('/')[-2]  
-
         }
         
-    
 
         #stack both dictionaries together for output
         yield {**specs, **other_specs}
