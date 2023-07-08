@@ -4,22 +4,23 @@ from scrapy import Request
 #from bs4 import BeautifulSoup
 # from selenium.webdriver.chrome.service import Service
 # from selenium.webdriver.common.by import By
-# from selenium.webdriver.chrome.options import Options
+#from selenium.webdriver.chrome.options import Options
 
 #from selenium.webdriver.support import expected_conditions as EC
 #import scrapy.selenium_middleware 
 #from selenium.webdriver.support.ui import WebDriverWait
-# from selenium import webdriver
-#import time
+#from selenium import webdriver
+import time
 
 
 rolex_url = 'https://www.rolex.com'
 
 
 class RolexspiderSpider(scrapy.Spider):
-    name = "rolexspider_scrapy"
+    name = "rolexspider"
     #allowed_domains = ["www.rolex.com"]
     start_urls = ["https://www.rolex.com/en-us/watches"]
+
     
     
     # def start_requests(self):
@@ -84,14 +85,14 @@ class RolexspiderSpider(scrapy.Spider):
         #scrape data not in dropdown menu
         other_specs = {
         'model_name' : response.css('section.css-1vaz9md.e11axyq41 h2::text').get(),
-        'price' : response.css('p.css-2im8jf.css-1g545ff.e8rn6rx1 ::text').get(),
+        'price' : response.css('p.css-2im8jf.css-1g545ff.e8rn6rx1 ::text').getall(),
         'reference_number': response.css('p.css-pzm8qd.e1yf0wve6 ::text').getall()[2],
         'model_url':response.url,
         'model_image': response.css('figure.wv_reveal img.css-fmei9v.er6nhxj0 ::attr(srcset)').get().split(',')[0].strip(','),
         'collection':str(response).split('/')[-2]  
         }
         
-        print(other_specs)
+       
         #stack both dictionaries together for output
         yield {**specs, **other_specs}
        
