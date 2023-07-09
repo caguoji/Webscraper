@@ -7,7 +7,7 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = "scraperolex"
+BOT_NAME = "scrapy_rolex"
 
 SPIDER_MODULES = ["scraperolex.spiders"]
 NEWSPIDER_MODULE = "scraperolex.spiders"

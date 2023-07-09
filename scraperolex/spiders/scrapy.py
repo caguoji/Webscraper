@@ -17,7 +17,7 @@ rolex_url = 'https://www.rolex.com'
 
 
 class RolexspiderSpider(scrapy.Spider):
-    name = "rolexspider"
+    name = "rolexspider_scrapy"
     #allowed_domains = ["www.rolex.com"]
     start_urls = ["https://www.rolex.com/en-us/watches"]
 
