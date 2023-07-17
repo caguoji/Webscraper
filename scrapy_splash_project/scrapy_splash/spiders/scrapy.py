@@ -66,7 +66,7 @@ class RolexspiderSpider(scrapy.Spider):
 
            #for each watch type, open all drop down menus to prepare page to be scraped
             #yield response.follow(watch_model_link,callback=self.parse_watch_page)
-            yield response.follow(splash_link,callback=self.parse_watch_page)
+            yield SplashRequest(splash_link,callback=self.parse_watch_page)
 
    
     def parse_watch_page(self,response):
@@ -90,7 +90,7 @@ class RolexspiderSpider(scrapy.Spider):
         #scrape data not in dropdown menu
         other_specs = {
         'model_name' : response.css('section.css-1vaz9md.e11axyq41 h2::text').get(),
-        #'price' : response.css('p.css-2im8jf.css-1g545ff.e8rn6rx1 span::text').get(),
+        'price' : response.css('p.css-2im8jf.css-1g545ff.e8rn6rx1 span::text').get(),
         #'price2': response.css('div.wv_reveal ::text').get(),
         'reference_number': response.css('p.css-pzm8qd.e1yf0wve6 ::text').getall()[2],
         'model_url':response.url,

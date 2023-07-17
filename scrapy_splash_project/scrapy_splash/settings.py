@@ -7,10 +7,10 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = "scraperolex"
+BOT_NAME = "scrapy_splash"
 
-SPIDER_MODULES = ["scraperolex.spiders"]
-NEWSPIDER_MODULE = "scraperolex.spiders"
+SPIDER_MODULES = ["scrapy_splash.spiders"]
+NEWSPIDER_MODULE = "scrapy_splash.spiders"
 
 
 # for Chrome driver 
