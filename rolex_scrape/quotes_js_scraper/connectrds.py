@@ -4,7 +4,7 @@ import boto3
 import pandas as pd
 import sqlalchemy as sa
 
-ENDPOINT="wcc-db.c6fuq7pku230.us-east-2.rds.amazonaws.com"
+ENDPOINT="rds-endpoint"
 PORT="5432"
 USER="postgres"
 REGION="us-east-2a"
